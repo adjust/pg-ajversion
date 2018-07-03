@@ -1,0 +1,90 @@
+SELECT '0.5.9'::ajversion;
+ ajversion 
+-----------
+ 0.5.9
+(1 row)
+
+SELECT '1.5'::ajversion;
+ ajversion 
+-----------
+ 1.5.9
+(1 row)
+
+SELECT '15'::ajversion;
+ ajversion 
+-----------
+ 15.0.0
+(1 row)
+
+SELECT '15'::ajversion > '18.9'::ajversion;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '15'::ajversion > '2.7'::ajversion;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '4095.1023.1023'::ajversion > '0.0.1'::ajversion;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT 'unknown'::ajversion;
+ ajversion 
+-----------
+ 0.0.0
+(1 row)
+
+SELECT '   '::ajversion;
+ ajversion 
+-----------
+ 0.0.0
+(1 row)
+
+SELECT '545 major 456 minor 466 patch'::ajversion;
+  ajversion  
+-------------
+ 545.456.466
+(1 row)
+
+SELECT '545 x 456 x 466'::ajversion;
+  ajversion  
+-------------
+ 545.456.466
+(1 row)
+
+SELECT 12.5::ajversion;
+ ajversion 
+-----------
+ 12.5.0
+(1 row)
+
+SELECT 1235::ajversion;
+ ajversion 
+-----------
+ 1235.0.0
+(1 row)
+
+SELECT '12.5.7'::ajversion > 12::ajversion;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '12.5.7'::ajversion < 13::ajversion;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT major('12.5.7'::ajversion), minor('12.5.7'::ajversion), patch('12.5.7'::ajversion);
+ major | minor | patch 
+-------+-------+-------
+    12 |     5 |     7
+(1 row)
+

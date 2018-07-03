@@ -1,0 +1,6 @@
+# country extension
+comment = 'semantic version type'
+default_version = '0.0.1'
+relocatable = true
+requires = ''
+module_pathname = '$libdir/ajversion'
